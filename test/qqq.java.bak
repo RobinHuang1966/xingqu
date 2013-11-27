@@ -9,6 +9,11 @@ public class qqq{
 		SchemaExport dbExport=new SchemaExport(conf);
 		dbExport.create(true, true);
 		System.out.println("HelloWorld");
+<<<<<<< HEAD
+		System.out.println("This is in the IdeaProjects!");
+=======
+		System.out.println("Merge in github,testing pull and push");
+>>>>>>> 24e46d44f93cc1dfbea3ec1f797962bfc192c26b
 	}
 
 }
