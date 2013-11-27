@@ -1,0 +1,192 @@
+@charset "utf-8";
+/* CSS Document */
+	
+#main{
+	width:1000px;
+	height:auto;
+	margin:0 auto;
+}
+#main .block_nav{
+	width:auto;
+	height:30px;
+	line-height:30px;
+	margin:5px auto 5px 5px;}
+.block_nav span{
+	width:auto;
+	margin:0 2px;}
+
+#main .domain{
+	width:1000px;
+	height:auto;
+	margin:0 auto 10px auto;
+	border:1px #ccc solid;
+}
+.domain_title{
+	width:1000px;
+	height:30px;
+	line-height:30px;
+	background:#9FC;}
+.domain_title span{
+	width:auto;
+	height:30px;
+	margin:0 15px;}
+.domain_title .bm{
+	float:right;}
+#domain1 .domain_con{
+	width:1000px;
+	height:45px;
+	overflow:hidden;
+	padding:10px 20px 5px 20px;}
+#domain1 .domain_con li{
+	width:139px;
+	height:20px;
+	padding-top:0px;
+	border:none;
+	}
+.domain_con{
+	width:1000px;
+	height:auto;
+	overflow:hidden;
+	padding:10px 20px 5px 20px;}
+.domain_con li{
+	width:320px;
+	height:65px;
+	padding-top:5px;
+	float:left;
+	border-bottom:#ccc 1px solid;
+	margin-bottom:5px;
+	}
+.domain_con li span{
+	line-height:1.5;
+}
+.domain_con .block_last{
+	border:none;}
+.domain_con li .block_img{
+	float:left;
+	width:30px;
+	height:65px;
+	margin-right:10px;}
+#main #notice{
+	width:980px;
+	height:165px;
+	padding:5px 10px;
+	margin:0 auto;
+	border:1px #ccc solid;}
+.notice_bm{
+	width:auto;
+	height:20px;
+	line-height:20px;
+	margin-bottom:2px;}
+#notice .notice_title{
+	width:1000px;
+	height:20px;
+	line-height:20px;
+	margin-bottom:2px;}
+.notice_title span{
+	width:auto;
+	margin-right:5px;}
+.notice_text p{
+	clear:both;
+	line-height:1.5;}
+#topiclist{
+	width:1000px;
+	height:auto;
+	margin:10px auto;
+	border-top:1px #ccc solid;}
+#topiclist li{
+	width:980px;
+	padding:0px 15px 0px 5px;
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	border:1px #ccc solid;
+	border-top:none;}
+#topiclist li img{
+	width:30px;
+	height:30px;
+	float:left;
+	margin-right:5px;}
+#topiclist li span{
+	width:auto;
+	height:30px;
+	margin-right:10px;}
+#topiclist #list2 a{
+	width:560px;
+	font-size:13px;
+	}
+#topiclist li .common{
+	width:400px;
+	float:right;
+
+	}
+#topiclist li .common div{
+	margin-left:20px;
+	margin-right:5px;
+	float:left;
+	width:70px;
+	text-align:center;
+	height:30px;
+	line-height:30px;
+}
+#topiclist li .common .list_auther{
+	width:90px;}
+.buildbutton{
+	float:left;
+	margin-bottom:10px;
+	margin-left:5px;}
+.pagebar{
+	float:right;}
+.buildarea{
+	width:1000px;
+	height:320px;
+	border:1px #ccc solid;
+	display:block;
+	margin:10px auto;
+	clear:both;
+}		
+.buildarea #areatop{
+	width:990px;
+	height:30px;
+	line-height:30px;
+	background:#39F;
+	padding-left:10px;}
+.buildarea #areatitle{
+	width:300px;
+	height:20px;
+	margin:20px 5px 5px 20px;}
+	
+	
+/*topic_content*/
+
+.rebacklist{
+	width:85px;
+	height:27px;
+	border:1px #39F solid;
+	float:right; 
+	 margin-right:20px;}
+.rebacklist:hover{
+	border:1px #003 solid;}
+#main #main_content{
+	clear:both;
+	width:998px;
+	height:auto;
+	margin:2px auto 10px auto;}
+table { border-collapse: collapse; border-color:#ccc; table-layout : fixed; margin:-1px;}
+table td { border-color:#ccc;}
+.content_title{
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	padding-left:10px;
+	}
+.content_title a{
+	font-weight:bold;}
+td .user_name{
+	width:180px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	border-bottom:dotted 1px #ccc;}
+
+.user_name a{
+	font-size:13px;}

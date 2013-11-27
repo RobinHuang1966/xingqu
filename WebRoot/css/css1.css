@@ -1,0 +1,315 @@
+@charset "utf-8";
+
+img{
+width:50px;
+height:20px;}
+*{
+	font-family: "微软雅黑";
+	letter-spacing:1.2;
+color:#333;}
+
+	
+/*个人主页css*/
+#home_header{
+	width:1000px;
+	height:130px;
+	margin:0 auto;
+	background:url(../images/home_header.jpg);}
+#home_header #home_name{
+	width:800px;
+	height:40px;
+	line-height:40px;
+	padding:20px 40px 20px 30px;}
+#home_name a{
+	font-size:16px;
+	color:#036;
+	font-weight:bold;}
+#home_nav{
+	margin-left:20px;
+	width:auto;
+	height:40px;
+	margin-top:10px;}
+#home_nav li{
+	width:auto;
+	height:40px;
+	line-height:40px;
+	margin-right:20px;
+	float:left;
+}
+#home_nav li a{
+	font-size:13px;
+	color:#036;
+	
+	font-weight:200;}
+#main_home{
+	width:1000px;
+	height:auto;
+	margin:0 auto;
+	background:url(../images/main.jpg);}
+#home_left{
+	width:250px;
+	height:auto;
+	float:left;
+}
+#home_left img,#home_mid img{
+width:50px;
+height:20px;}
+#main #home_image,#main #home_pro,#main #home_topic{
+	width:238px;
+	border:1px #ccc solid;
+	margin:10px 5px;
+	height:230px;}
+#home_image .home_title,#home_pro .home_title,#home_topic .home_title{
+	width:228px;
+	height:30px;
+	position:relative;
+	line-height:30px;
+	padding-left:10px;
+	background:url(../images/title.jpg);}
+#home_image #user_images{
+	width:120px;
+	height:140px;
+	margin:10px 55px;}
+#home_image #user_images #user_image,#home_image #user_images img{
+	width:120px;
+	height:120px;}
+#home_pro .home_title span,#home_friend .home_title span,#home_group .home_title span,#home_topic .home_title span{
+	position:absolute;
+	top:3px;
+	left:180px}
+#home_friend .home_title span img,#home_group .home_title img{
+	width:50px;
+	height:20px;}
+#home_image #user_images span{
+	text-align:center;}
+#home_image tr{
+	text-align:center;}
+#main #home_pro{
+	height:190px;
+	overflow:hidden;
+	position:relative;}
+#main #home_pro ul,#main #home_topic{
+height:127px;
+overflow:hidden;}
+#home_pro li,#main #home_topic ul li{
+	width:228px;
+	margin:0 1px;
+	line-height:20px;
+	overflow:hidden;
+	display:block;
+	border-bottom:dashed 1px #ccc;}
+#home_pro li img,#home_topic li img{
+	float:left;
+	width:16px;
+	height:16px;}
+#home_pro li span{
+	margin-left: 10px; }  
+ul li#pro1 span{
+	float:right;}
+#home_pro #pro2{
+	line-height:40px;
+	width:228px;
+	height:40px;
+	text-align:center;}
+#home_mid{
+	width:490px;
+	float:left;
+	height:auto;
+	}
+#home_mid #home_info,#home_mid #home_trend,#home_mid #home_share,#home_mid #home_message{
+	width:488px;
+	height:90px;
+	margin:10px 5px;
+	border:1px #ccc solid;
+	position:relative;
+	}
+#home_info .home_title,#home_trend .home_title,#home_share .home_title,#home_message .home_title{
+	width:478px;
+	height:30px;
+	padding-left:10px;
+	background:url(../images/title.jpg);
+	line-height:30px;}
+#home_info .home_title span,#home_trend .home_title span,#home_share .home_title span,#home_message .home_title span{
+	position:absolute;
+	top:2px;
+	left:410px;}
+#home_info table{
+	margin:10px;
+	width:458px;
+	float:left;}
+#home_info td{
+	text-align:center;}
+#home_trend ul,#home_share ul{
+	width:468px;
+	margin:0 10px;
+	}
+#home_trend ul li,#home_share ul li{
+	width:468px;
+	border-bottom:dashed 1px #ccc;
+	line-height:20px;}
+#home_trend ul li span,#home_share ul li span,#home_message ul li span{
+	margin-left:15px;}
+#home_trend ul li a{
+	overflow:hidden;}
+#home_mid #home_trend,#home_mid #home_share{
+	height:180px;
+	overflow:hidden;}
+#home_mid #home_message{
+	height:280px;
+	overflow:hidden;}
+#home_message textarea{
+	margin-top:10px;
+	margin-left:10px;
+	margin-bottom:10px;}
+#home_message input{
+	margin: 0 auto 10px 10px;}
+#home_message ul{
+	width:468px;
+	height:auto}
+#home_message ul li{
+	width:468px;
+	height:50px;}
+#home_message ul li img{
+	width:30px;
+	height:30px;}
+#home_message ul li #user_images{
+	width:50px;
+	height:50px;
+	float:left;
+	margin-right:15px;}
+#main #home_right{
+	width:240px;
+	height:auto;
+	float:right;}
+#home_right img{
+	width:50px;
+	height:50px;}
+#main #home_friend,#main #home_group{
+	width:228px;
+	border:1px #ccc solid;
+	margin:10px 5px;
+	height:180px;
+	overflow:hidden;
+	position:relative;}
+#home_friend .home_title,#home_group .home_title{
+	width:218px;
+	height:30px;
+	line-height:30px;
+	padding-left:10px;
+	background:url(../images/title.jpg);}
+#home_friend #user_images,#home_group #group{
+	width:50px;
+	height:50px;
+	margin:10px;
+	float:left;}
+	
+#home_group #group_name{
+width:50px;
+height:20px;
+overflow:hidden;}
+
+/*作品详细页面和个人作品页面*/
+#pro_area,#home_pro_area{
+	width:998px;
+	height:auto;
+	margin:10px auto;
+	border:1px #ccc solid;}
+#pro_area #pro_name,#pro_area #pro_info,#home_pro_area .home_pro_title{
+	width:988px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	background:url(../images/title.jpg);
+	overflow:hidden;}
+#pro_area #pro_info{
+	width:auto;
+	margin:10px auto;
+	background:none;
+}	
+#pro_info span{
+	margin-right:10px;}
+#pro_area #pro_content{
+	margin:5px 10px;
+	width:978px;
+	height:auto;
+	overflow:hidden;}
+#home_pro_area .home_pro_title{
+	text-align:left;
+	padding-left:10px;}
+#home_pro_area td,#home_pro_area tr{
+	overflow:hidden;}
+#home_pro_area td{
+	border-bottom:dashed 1px #ccc;}
+/*留言板页面*/
+
+#home_message_detail{
+	width:998px;
+	height:auto;
+	border:1px #ccc solid;
+	margin:10px auto;
+}
+#home_message_detail .home_title{
+	width:988px;
+	height:30px;
+	line-height:30px;
+	padding-left:10px;
+	background:url(../images/title.jpg);
+	}
+#message{
+	width:970px;
+	padding:10px;
+	height:auto;}
+#message #leave_word{
+	margin:10px;}
+#message img{
+	width:50px;
+	height:50px;}
+#message #user_images{
+	float:left;
+	margin-right:20px;}
+#message ul li{
+	height:100px;
+	clear:both;
+	margin-bottom:20px;
+	border-bottom:1px #ccc dashed;}
+	
+	
+/*个人信息页面，填写，修改*/
+#user_info{
+	width:998px;
+	height:auto;
+	margin-top:10px;
+	border:1px solid #ccc;
+}
+#user_info .user_info_title{
+	width:988px;
+	line-height:30px;
+	padding-left:10px;
+	height:30px;
+	position:relative;
+	background:url(../images/title.jpg);
+	}
+#user_info .user_info_title span{
+	position:absolute;
+	top:3px;
+	left:850px;}
+#user_info #user_info_list{
+	width:700px;
+	height:auto;
+	padding:40px 145px;}
+#user_info_list tr{
+	height:40px;}
+#user_info_list tr img{
+	width:50px;
+	height:50px;}
+/*search*/
+#main #searchCon{
+width:800px;
+height:auto;}
+#searchCon #search{
+width:780px;
+height:40px;
+padding:10px;
+}
+#search_form input{
+border:1px #ccc solid;}

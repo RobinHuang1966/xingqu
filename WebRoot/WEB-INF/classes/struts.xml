@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.multipart.maxSize" value="55000000"></constant>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<package name="mypackge" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="myInterceptor"
+				class="com.hwadee.xingqu.filter.LoginInterceptor">
+			</interceptor>
+			<interceptor name="limitInterceptor"
+				class="com.hwadee.xingqu.filter.LimitCheckInterceptor">
+			</interceptor>
+		</interceptors>
+		<global-results>
+			<result name="login">/prompt.jsp</result>
+		</global-results>
+
+		<action name="index" class="com.hwadee.xingqu.action.IndexShowAction"
+			method="showIndex">
+			<result name="success" type="dispatcher">/index.jsp</result>
+		</action>
+
+		<action name="userexit" class="com.hwadee.xingqu.action.UserManageAction"
+			method="userExit">
+			<result name="success" type="redirect">/forward.jsp</result>
+		</action>
+		<action name="serach" class="com.hwadee.xingqu.action.IndexShowAction"
+			method="multipleSearch">
+			<result name="success">/searchresult.jsp</result>
+		</action>
+
+	</package>
+	<package name="theme" namespace="/Theme" extends="mypackge">
+		<action name="themelist" class="com.hwadee.xingqu.action.ThemeManageAction"
+			method="themeList">
+			<result>
+				/Theme/themelist.jsp
+            </result>
+		</action>
+	</package>
+	<package name="topic" namespace="/Topic" extends="mypackge">
+
+		<interceptors>
+			<interceptor name="myInterceptor"
+				class="com.hwadee.xingqu.filter.LoginInterceptor">
+			</interceptor>
+		</interceptors>
+		<action name="addtopic" class="com.hwadee.xingqu.action.TopicManageAction"
+			method="addTopic">
+			<result type="redirect">/Group/showgroupdetail?gid=${gid}</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="topiclist" class="com.hwadee.xingqu.action.TopicManageAction"
+			method="topicList">
+			<result>/Topic/topiclist.jsp</result>
+		</action>
+
+		<action name="deletetopic" class="com.hwadee.xingqu.action.TopicManageAction"
+			method="deleteTopic">
+			<result type="redirect">/Topic/topiclist</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="findTopicsimple" class="com.hwadee.xingqu.action.TopicManageAction"
+			method="showTopicsimple">
+			<result name="success">/Topic/addtopic.jsp </result>
+		</action>
+
+		<action name="updatetopic" class="com.hwadee.xingqu.action.TopicManageAction"
+			method="updateTopic">
+			<result name="success" type="redirect"> /Topic/topiclist </result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+
+		</action>
+
+		<action name="showtopic" class="com.hwadee.xingqu.action.TopicManageAction"
+			method="showTopic">
+			<result name="success">/Topic/showtopic.jsp</result>
+		</action>
+
+		<action name="replytopic" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="replyTopic">
+			<result name="success" type="redirect">showtopic?tid=${URL}
+			</result>
+
+
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+		</action>
+
+		<action name="attentiontopic" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="attentionTopic">
+			<result name="success" type="redirect">/Topic/attentiontopic_success.jsp
+			</result>
+			<result name="error" type="redirect">/Topic/error.jsp
+			</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+		</action>
+
+		<action name="sharetopic" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="shareTopic">
+			<result name="success" type="redirect">/Topic/attentiontopic_success.jsp
+			</result>
+			<result name="error" type="redirect">/Topic/error.jsp
+			</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="deleteShareTopic" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="deleteShareTopic">
+			<result name="success" type="redirect">/Topic/attentiontopic_success.jsp
+			</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="deleteAttentionTopic" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="deleteAttentionTopic">
+			<result name="success" type="redirect">/Topic/attentiontopic_success.jsp
+			</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="find_topic" class="com.hwadee.xingqu.action.TopicManageAction"
+			method="findTopics">
+			<result name="success">/Topic/topiclist.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="UserManageAction" namespace="/User" extends="mypackge">
+		<action name="useradd" class="com.hwadee.xingqu.action.UserManageAction"
+			method="userAdd">
+			<result name="success" type="dispatcher">/forward.jsp</result>
+			<result name="error">/register.jsp</result>
+		</action>
+		<action name="login" class="com.hwadee.xingqu.action.UserManageAction"
+			method="login">
+			<result name="success" type="redirect">
+				/forward.jsp
+			</result>
+			<result name="error">/login.jsp</result>
+		</action>
+
+		<action name="showmyhome" class="com.hwadee.xingqu.action.UserManageAction"
+			method="showMyHome">
+			<result name="success">/Space/home.jsp</result>
+
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="exitgroup" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="exitGroup">
+			<result name="success" type="redirect">User/showmygroup</result>
+			<result name="error" type="redirect">User/showmygroup</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="visitfriendspace" class="com.hwadee.xingqu.action.UserManageAction"
+			method="visitFriendSpace">
+			<result name="success" type="dispatcher">/Space/home.jsp</result>
+
+		</action>
+
+		<action name="userupadte" class="com.hwadee.xingqu.action.UserManageAction"
+			method="userUpdate">
+			<result name="success">/Space/home_updateusersuccess.jsp</result>
+		</action>
+
+		<action name="showuserinfo" class="com.hwadee.xingqu.action.UserManageAction"
+			method="showUserInfo">
+			<result name="success">Space/home_userinfo.jsp</result>
+		</action>
+		<action name="addfriend" class="com.hwadee.xingqu.action.FriendManageAction"
+			method="addFriend">
+			<result name="success" type="redirectAction">../Space/addfriendsuccess.jsp
+			</result>
+			<result name="error" type="redirectAction">../Space/addfrienderror.jsp</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="showmytopic" class="com.hwadee.xingqu.action.UserManageAction"
+			method="showMyTopic">
+			<result name="success">/Space/home_topic.jsp</result>
+		</action>
+		<action name="showmyworks" class="com.hwadee.xingqu.action.UserManageAction"
+			method="showMyHome">
+			<result name="success">/Space/home_works.jsp</result>
+		</action>
+
+		<action name="deletefriend" class="com.hwadee.xingqu.action.FriendManageAction"
+			method="deleteFriend">
+			<result name="success" type="redirectAction">showmyfriend</result>
+		</action>
+
+		<action name="showmyfriend" class="com.hwadee.xingqu.action.UserManageAction"
+			method="showMyHome">
+			<result name="success">/Space/home_friend.jsp</result>
+		</action>
+
+
+		<action name="showmyshare" class="com.hwadee.xingqu.action.UserManageAction"
+			method="showMyShare">
+			<result name="success">/Space/home_share.jsp</result>
+		</action>
+
+
+		<action name="showmygroup" class="com.hwadee.xingqu.action.UserManageAction"
+			method="showMyGroup">
+			<result name="success">/Space/home_group.jsp</result>
+		</action>
+		<action name="leavemessage" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="leaveMessage">
+			<result name="success">/Space/home_message.jsp</result>
+			<result name="error">/Space/leavemessageerror.jsp</result>
+		</action>
+
+		<action name="listmymessage" class="com.hwadee.xingqu.action.UserManageAction"
+			method="listMyMessage">
+			<result name="success">/Space/home_message.jsp</result>
+		</action>
+		<action name="persondynamic" class="com.hwadee.xingqu.action.UserManageAction"
+			method="personDynamic">
+			<result name="success">/Space/home_dynamic.jsp</result>
+		</action>
+
+	</package>
+	<package name="WorksManageAction" namespace="/Works" extends="mypackge">
+		<action name="uploadmyfile" class="com.hwadee.xingqu.action.FileManageAction"
+			method="uploadFile">
+			<result name="input">/Space/uploaderror.jsp</result>
+			<result name="success" type="redirectAction">workslist</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">536870912</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="workslist" class="com.hwadee.xingqu.action.FileManageAction"
+			method="showWorksList">
+			<result name="success">/Works/workslist.jsp</result>
+		</action>
+
+		<action name="downloadworks" class="com.hwadee.xingqu.action.DownloadAction"
+			method="downLoadWorks">
+			<result name="success" type="stream">
+				<param name="contentDisposition">attachment;filename="${wname}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+
+		<action name="goodworks" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="goodWorks">
+			<result name="success" type="redirect">workslist</result>
+		</action>
+
+		<action name="badworks" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="badWorks">
+			<result name="success" type="redirect">workslist</result>
+		</action>
+
+		<action name="deleteworks" class="com.hwadee.xingqu.action.FileManageAction"
+			method="deleteWorks">
+			<result name="success" type="redirect">/User/showmyworks</result>
+			<result name="error" type="redirect">/Works/deleteworks_error.jsp
+			</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="sortbytype" class="com.hwadee.xingqu.action.FileManageAction"
+			method="sortByType">
+			<result name="success" type="dispatcher">/Works/workslist.jsp</result>
+		</action>
+
+		<action name="shareworks" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="shareWorks">
+			<result name="success">/Works/sharesuccess.jsp</result>
+			<result name="error">/Works/shareerror.jsp</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="showworksdetail" class="com.hwadee.xingqu.action.WorksManageAtion"
+			method="showWorksDetail">
+			<result name="success" type="dispatcher">/Works/worksdetail.jsp</result>
+		</action>
+	</package>
+
+	<package name="GroupManageAction" namespace="/Group" extends="mypackge">
+		<action name="addGroup" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="addGroup">
+			<result name="ok" type="redirectAction">showgroup</result>
+			<result name="error">/Group/addgrouperror.jsp</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="showgroup" class="com.hwadee.xingqu.action.GroupListAction"
+			method="showGroup">
+			<result name="success">/Group/listGroup.jsp</result>
+		</action>
+
+		<action name="showgroupdetail" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="showGroupDetail">
+			<result name="success">/Group/groupdetail.jsp</result>
+		</action>
+
+		<action name="deletegroup" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="deleteGroup">
+			<result name="success" type="redirectAction">showgroup</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="updateGroup" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="editGroup">
+			<result name="ok" type="redirectAction">listGroup</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="joingroup" class="com.hwadee.xingqu.action.LogerManageAction"
+			method="joinGroup">
+			<result name="success">/Group/joinsuccess.jsp</result>
+			<result name="error">/Group/joingrouperror.jsp</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="editgroup" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="editGroup">
+			<result name="success">/Group/editGroup.jsp</result>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+	<!--作者：黄廷鹏-->
+	<package name="HomeManageAction" namespace="/Home" extends="mypackge">
+
+		<action name="listMyDynamic" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="listMyDynamic">
+			<result name="success">/Home/myDynamic.jsp</result>
+		</action>
+		<action name="deleteMyDynamic" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="deleteMyDynamic">
+			<result name="success" type="redirectAction">listMyDynamic</result>
+		</action>
+		<action name="listMyGroup" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="listMyGroup">
+			<result name="success">/Home/myHome.jsp</result>
+		</action>
+		<action name="deleteMyGroup" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="deleteMyGroup">
+			<result name="success" type="redirectAction">listMyGroup</result>
+		</action>
+		<action name="listJoinGroup" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="listJoinGroup">
+			<result name="success">/Home/myHome.jsp</result>
+		</action>
+		<action name="deleteJoinGroup" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="deleteJoinGroup">
+			<result name="success" type="redirectAction">listJoinGroup</result>
+		</action>
+		<action name="listHome" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="listHome">
+			<result name="success">/Home/myHome.jsp</result>
+		</action>
+		<action name="listMyWorks" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="listMyWorks">
+			<result name="success">/Home/myWorks.jsp</result>
+		</action>
+		<action name="deleteMyWorks" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="deleteMyWorks">
+			<result name="success" type="redirectAction">listMyWorks</result>
+		</action>
+		<action name="listMyMessage" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="listMyMessage">
+			<result name="success">/Home/myMessage.jsp</result>
+		</action>
+		<action name="listMyInfor" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="listMyInfor">
+			<result name="success">/Home/myMessage.jsp</result>
+		</action>
+		<action name="listMyShare" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="listMyShare">
+			<result name="success">/Home/myWorks.jsp</result>
+		</action>
+		<action name="deleteMyShare" class="com.hwadee.xingqu.action.HomeManageAction"
+			method="deleteMyShare">
+			<result name="success" type="redirectAction">listMyShare</result>
+		</action>
+
+	</package>
+
+
+
+	<package name="admin" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="myInterceptor"
+				class="com.hwadee.xingqu.filter.LoginInterceptor">
+			</interceptor>
+			<interceptor name="limitInterceptor"
+				class="com.hwadee.xingqu.filter.LimitCheckInterceptor">
+			</interceptor>
+		</interceptors>
+
+		<!-- 管理员登录验证 -->
+		<action name="AdminLogin" class="com.hwadee.xingqu.action.UserManageAction"
+			method="login">
+			<result name="success" type="redirect">/adminIndex/adminIndex.jsp
+			</result>
+			<result name="error">/admin/adminLogin.jsp</result>
+		</action>
+
+		<!--
+			Tree的配置 <action name="ajaxQueryNodes"
+			class="com.hwadee.xingqu.actions.TreeAction" method="AjaxQueryNodes"
+			> <result name="ok">/admin/a.jsp</result> <result
+			name="error">/admin/adminLogin.jsp</result> </action>
+		-->
+
+
+		<!-- 公告管理 -->
+		<action name="SysNoticeList" class="com.hwadee.xingqu.action.SysNoticeAction"
+			method="list">
+			<result name="list" type="dispatcher">/adminIndex/MyOfficIndex/sysNoticeList.jsp
+			</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="DelSysNotice" class="com.hwadee.xingqu.action.SysNoticeAction"
+			method="del">
+			<result name="ok" type="redirect">SysNoticeList.action</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="ShowSysnoticeInfo" class="com.hwadee.xingqu.action.SysNoticeAction"
+			method="showSysnoticeInfo">
+			<result name="ok" type="dispatcher">/admin/showSysnoticeInfo.jsp</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="AddSysNotice" class="com.hwadee.xingqu.action.SysNoticeAction"
+			method="add">
+			<result name="ok" type="redirect">SysNoticeList.action</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<!-- 小组管理 -->
+
+		<action name="GroupList" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="list">
+			<result name="list">/adminIndex/MyOfficIndex/groupList.jsp</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="FindGroupByGTitle" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="dimFind">
+			<result name="ok">/adminIndex/MyOfficIndex/findGroup.jsp</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="DelGroup" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="del">
+			<result name="ok" type="redirect">GroupList.action</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="FindByGisVerify" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="findByGisVerify">
+			<result name="ok">/adminIndex/MyOfficIndex/groupVerify.jsp</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="ChangeVerify" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="changeVerify">
+			<result name="ok">/adminIndex/MyOfficIndex/groupVerify.jsp</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="DisAgree" class="com.hwadee.xingqu.action.GroupManageAction"
+			method="disAgree">
+			<result name="ok">/adminIndex/MyOfficIndex/groupVerify.jsp</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<!-- 用户操作管理 -->
+		<action name="UserList" class="com.hwadee.xingqu.action.UserAction"
+			method="userlist">
+			<result name="list">/adminIndex/MyOfficIndex/userList.jsp
+			</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="DelUser" class="com.hwadee.xingqu.action.UserAction"
+			method="del">
+			<result name="ok" type="redirect">UserList.action</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="ShowUserInfo" class="com.hwadee.xingqu.action.UserAction"
+			method="dimFind">
+			<result name="ok" type="dispatcher">/adminIndex/MyOfficIndex/user_find.jsp
+			</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="AddUser" class="com.hwadee.xingqu.action.UserAction"
+			method="add">
+
+			<result name="ok" type="redirect">UserList.action</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<!-- 主题操作管理 -->
+		<action name="ThemeList" class="com.hwadee.xingqu.action.ThemeAction"
+			method="list">
+			<result name="list" type="dispatcher">/adminIndex/MyOfficIndex/themeList.jsp
+			</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="Del" class="com.hwadee.xingqu.action.ThemeAction"
+			method="del">
+			<result name="ok" type="redirect">ThemeList.action</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="Update" class="com.hwadee.xingqu.action.ThemeAction"
+			method="update">
+			<result name="ok" type="redirect">ThemeList.action</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="ShowThemeInfo" class="com.hwadee.xingqu.action.ThemeAction"
+			method="dimFind">
+			<result name="ok" type="dispatcher">/adminIndex/MyOfficIndex/findTheme.jsp
+			</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="Add" class="com.hwadee.xingqu.action.ThemeAction"
+			method="addTheme">
+			<result name="ok" type="redirect">ThemeList.action</result>
+			<result name="error">/adminIndex/MyOfficIndex/limiterror.jsp</result>
+			<interceptor-ref name="limitInterceptor"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+
+	</package>
+</struts>

@@ -1,0 +1,32 @@
+
+body				{margin:0px; font-size:12px; background-image:url(bg_login.png); background-position:bottom; background-repeat:repeat-x; background-color:#A2D5F0;}
+#login{
+margin:0 auto;
+color:white;
+background-image:url(bg_login.png);
+background-position:bottom;
+background-repeat:repeat-x;
+background-color:#A2D5F0;
+}
+#login #main{
+width:800px;
+height:490px;
+margin:70px auto auto auto;
+position:relative;
+background-image:url(login_main.png);
+}
+#main #login_detail{
+width:300px;
+height:200px;
+position:absolute;
+top:270px;
+left:380px;
+}
+#login_detail .label{
+color:#fff;}
+#login #root{
+	width:800px;
+	height:104px;
+	margin:0 auto;
+	background-image:url(login_root.jpg);
+}
