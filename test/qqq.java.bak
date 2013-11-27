@@ -8,7 +8,6 @@ public class qqq{
 		conf.configure("/hibernate.cfg.xml");
 		SchemaExport dbExport=new SchemaExport(conf);
 		dbExport.create(true, true);
-		System.out.println("HelloWorld");
 	}
 
 }
