@@ -9,6 +9,7 @@ public class qqq{
 		SchemaExport dbExport=new SchemaExport(conf);
 		dbExport.create(true, true);
 		System.out.println("HelloWorld");
+		System.out.println("This is in the IdeaProjects!");
 	}
 
 }
