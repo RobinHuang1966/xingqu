@@ -14,6 +14,11 @@ public class qqq{
 		System.out.println("This is in the IdeaProjects 2.");
 		System.out.println("This is in the github2");
 		System.out.println("This is in the github 3.");
+<<<<<<< HEAD
+		System.out.println("This is in the IdeaProjects 4.");
+=======
+		System.out.println("This is in the github 4.");
+>>>>>>> c7276aad2937332d8a635ee95d99c1a99262ad5b
 	}
 
 }
